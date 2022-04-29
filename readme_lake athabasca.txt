@@ -38,12 +38,12 @@ format Dates YYMMDD10.;
 	where Lake_name='Athabasca';
 run;
 
-/*Union Sentinel A data with Sentinel B data*/
+/*Union Sentinel A data with Sentinel B data: lake_athabasca_sentinelAB_merged_full_data.csv*/
 DATA  SENTINEL_AB_MERGED_V0_ATHABASCA;
 SET SENTINEL_A_V0_ATHABASCA SENTINEL_B_V0_ATHABASCA;
 RUN;
 
-/*take the median of the waterlevel for each combo of date, and satelite, relative_orbit*/
+/*take the median of the waterlevel for each combo of date, and satelite, relative_orbit: Sentinel_A_B_merged_lake athabasca.csv*/
 proc summary data=SENTINEL_AB_MERGED_V0_ATHABASCA median NWAY;
   var Water_level;
   class Dates Satelite Relaive_orbit;
